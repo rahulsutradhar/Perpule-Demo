@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Perpule-Sample</string>
+
+    <string name="facebook_login">continue with Facebook</string>
+
+    <string name="facebook_app_id">263017497443811</string>
+    <string name="fb_login_protocol_scheme">fb263017497443811</string>
+
+
+</resources>
