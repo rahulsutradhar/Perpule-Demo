@@ -1,7 +1,13 @@
 package perpule.com.viewmodel;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,6 +23,7 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -32,7 +39,10 @@ import io.fabric.sdk.android.Fabric;
 import perpule.com.Perpule;
 import perpule.com.R;
 import perpule.com.fragment.AuthentictionFragment;
+import perpule.com.global.Constant;
 import perpule.com.model.FacebookUser;
+
+import static perpule.com.global.Constant.REQUEST_CODE;
 
 /**
  * Created by developers on 03/02/2017 AD.
@@ -80,7 +90,6 @@ public class AuthenticationFragmentViewModel extends BaseViewModel {
         doTheFacebookLogin();
     }
 
-
     public void doTheFacebookLogin() {
         mCallbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().logInWithReadPermissions(authentictionFragment.getActivity(), permissionNeeds);
@@ -88,6 +97,9 @@ public class AuthenticationFragmentViewModel extends BaseViewModel {
 
     }
 
+    /**
+     * Facebook callback method
+     */
     private FacebookCallback<LoginResult> mCallback = new FacebookCallback<LoginResult>() {
         @Override
         public void onSuccess(LoginResult loginResult) {
@@ -146,7 +158,7 @@ public class AuthenticationFragmentViewModel extends BaseViewModel {
 
             if (facebookUser != null) {
                 //transact to next fragment and display the details
-                Toast.makeText(authentictionFragment.getActivity(), "Successfuly Logged in as " + facebookUser.getName() + " ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(authentictionFragment.getActivity(), "Successfuly Logged in as " + facebookUser.getName() + "\nEmail - " + facebookUser.getEmail(), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(authentictionFragment.getActivity(), "Something went wrong.", Toast.LENGTH_SHORT).show();
             }
@@ -156,10 +168,16 @@ public class AuthenticationFragmentViewModel extends BaseViewModel {
     }
 
     /**
-     * Reference passing of the call back methord override in Activity via fragment
+     * Reference passing of the callback methord override in Activity via fragment
      */
     public void setActivityResutlToCallback(int requestCode, int resultCode, Intent data) {
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        try {
+            //passing the result data to facebook callback manager
+            mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -183,6 +201,31 @@ public class AuthenticationFragmentViewModel extends BaseViewModel {
                 Toast.makeText(Perpule.getContext(), "Authentication failed", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+
+    /**
+     * Invite Friends
+     */
+    public void onClickInvite() {
+
+        onInviteClicked();
+    }
+
+    public void onInviteClicked() {
+        Intent intent = new AppInviteInvitation.IntentBuilder(authentictionFragment.getActivity().getResources().getString(R.string.invitation_title))
+                .setMessage(authentictionFragment.getActivity().getResources().getString(R.string.invitation_message))
+                .setDeepLink(Uri.parse(authentictionFragment.getActivity().getResources().getString(R.string.invitation_deep_link)))
+                .setCustomImage(Uri.parse(authentictionFragment.getActivity().getResources().getString(R.string.invitation_custom_image)))
+                .setCallToActionText(authentictionFragment.getActivity().getResources().getString(R.string.invitation_cta))
+                .build();
+
+        if (intent.resolveActivity(authentictionFragment.getActivity().getPackageManager()) != null) {
+            authentictionFragment.startActivityForResult(intent, Constant.REQUEST_INVITE);
+        } else {
+            Toast.makeText(Perpule.getContext(), "Sorry No application found to share.", Toast.LENGTH_LONG).show();
+        }
+
     }
 
 }
