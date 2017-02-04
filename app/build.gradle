@@ -30,6 +30,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -49,21 +50,36 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
+
+    /**
+     * Suppoer library
+     */
+    compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:support-v4:25.1.0'
-    /*
-        * Facebook SDK
-        **/
+
+    /**
+     * Facebook SDK
+     */
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+
     /**
      * Gson
      */
     compile 'com.google.code.gson:gson:2.4'
+
     /**
      * Fabric digits
      */
     compile('com.digits.sdk.android:digits:2.0.5@aar') {
         transitive = true;
     }
+
+    /**
+     * Firebase Invites
+     */
+    compile 'com.google.firebase:firebase-invites:10.0.1'
+
 }
+
+apply plugin: 'com.google.gms.google-services'

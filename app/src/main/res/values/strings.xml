@@ -2,9 +2,16 @@
     <string name="app_name">Perpule-Sample</string>
 
     <string name="facebook_login">continue with Facebook</string>
+    <string name="refer_your_friend">INVITE FRIENDS</string>
 
     <string name="facebook_app_id">263017497443811</string>
     <string name="fb_login_protocol_scheme">fb263017497443811</string>
 
+    <string name="invitation_title">REFER &amp; EARN</string>
+    <string name="invitation_message">Perpule is a self checking out app. Download now- https://va44d.app.goo.gl/XktS </string>
+    <string name="invitation_deep_link">https://va44d.app.goo.gl/XktS</string>
+    <string name="invitation_custom_image">https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Logo_of_X_(company).svg/600px-Logo_of_X_(company).svg.png</string>
+    <string name="invitation_cta">Install app</string>
+    <string name="subject_email">Perpule - Self check out app.</string>
 
 </resources>

@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content">
 
                 <Button
+                    style="@style/AppTheme.Button.PrimaryButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_margin="20dp"
@@ -55,6 +56,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <Button
+                    style="@style/AppTheme.Button.PrimaryButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_margin="20dp"
+                    android:onClick="@{()->viewModel.onClickInvite()}"
+                    android:text="@string/refer_your_friend" />
 
             </RelativeLayout>
 

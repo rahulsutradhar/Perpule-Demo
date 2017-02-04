@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "723755895372",
+    "firebase_url": "https://perpule-sample.firebaseio.com",
+    "project_id": "perpule-sample",
+    "storage_bucket": "perpule-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723755895372:android:86e4f2d9eb8df5d9",
+        "android_client_info": {
+          "package_name": "perpule.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723755895372-40t20tffqrklopul74g2hlmm4r68r71k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9YyQOoLzIePabu5fdf_SkLMG6zWmFsms"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723755895372-40t20tffqrklopul74g2hlmm4r68r71k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
