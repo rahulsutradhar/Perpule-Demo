@@ -67,17 +67,4 @@ public class BaseFragment extends Fragment {
         }
     }
 
-    public void doFragmentTransaction(int containerViewId, BaseFragment destinationFragment) {
-
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left,
-                android.R.anim.slide_out_right);
-        fragmentTransaction.replace(containerViewId, destinationFragment);
-        //add the fragment to backstack
-        fragmentTransaction.addToBackStack(fragmentManager.getFragments().getClass().getSimpleName());
-        fragmentTransaction.commit();
-    }
-
-
 }

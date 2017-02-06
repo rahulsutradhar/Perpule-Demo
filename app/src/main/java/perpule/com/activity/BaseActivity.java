@@ -1,8 +1,6 @@
 package perpule.com.activity;
 
 import android.content.Intent;
-import android.os.Build;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -23,7 +21,6 @@ import perpule.com.Perpule;
 import perpule.com.R;
 import perpule.com.fragment.AuthentictionFragment;
 
-import static perpule.com.global.Constant.REQUEST_CODE;
 import static perpule.com.global.Constant.REQUEST_INVITE;
 
 public class BaseActivity extends AppCompatActivity {
@@ -96,9 +93,6 @@ public class BaseActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         try {
-
-            AuthentictionFragment fragment = (AuthentictionFragment) getSupportFragmentManager().findFragmentByTag("AUTH_FRAGMENT");
-
             if (requestCode == REQUEST_INVITE) {
                 if (resultCode == RESULT_OK) {
                     // Get the invitation IDs of all sent messages
@@ -112,16 +106,10 @@ public class BaseActivity extends AppCompatActivity {
                     // ...
                     Toast.makeText(Perpule.getContext(), "failed to Send Invitation", Toast.LENGTH_LONG).show();
                 }
-            } else {
-
-                if (fragment != null) {
-                    fragment.onActivityResult(requestCode, resultCode, data);
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 }

@@ -1,25 +1,5 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'io.fabric'
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-    flatDir {
-        dirs 'libs'
-    }
-    maven { url 'https://maven.fabric.io/public' }
-}
-
-buildscript {
-    repositories {
-        maven { url 'https://maven.fabric.io/public' }
-    }
-
-    dependencies {
-        classpath 'io.fabric.tools:gradle:1.21.5'
-    }
-}
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -57,23 +37,6 @@ dependencies {
      */
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:support-v4:25.1.0'
-
-    /**
-     * Facebook SDK
-     */
-    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
-
-    /**
-     * Gson
-     */
-    compile 'com.google.code.gson:gson:2.4'
-
-    /**
-     * Fabric digits
-     */
-    compile('com.digits.sdk.android:digits:2.0.5@aar') {
-        transitive = true;
-    }
 
     /**
      * Firebase Invites

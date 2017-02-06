@@ -1,16 +1,13 @@
 package perpule.com.fragment;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.digits.sdk.android.Digits;
 
 import perpule.com.R;
 import perpule.com.databinding.AuthenticationFragmentBinding;
@@ -39,9 +36,6 @@ public class AuthentictionFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //clear the seesion for digit login
-        Digits.clearActiveSession();
-
     }
 
     @Override
@@ -59,19 +53,11 @@ public class AuthentictionFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        authenticationFragmentViewModel.bindLayout();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        try {
-            //passing the result data to facebook callback manager
-            authenticationFragmentViewModel.setActivityResutlToCallback(requestCode, resultCode, data);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
 

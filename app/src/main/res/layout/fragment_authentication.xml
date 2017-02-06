@@ -22,35 +22,6 @@
             android:layout_centerInParent="true"
             android:orientation="vertical">
 
-
-            <!-- facebook-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Button
-                    style="@style/AppTheme.Button.PrimaryButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_margin="20dp"
-                    android:onClick="@{()->viewModel.onClickFacebookLogin()}"
-                    android:text="@string/facebook_login" />
-
-            </RelativeLayout>
-
-            <!-- digit-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.digits.sdk.android.DigitsAuthButton
-                    android:id="@+id/auth_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp" />
-
-            </RelativeLayout>
-
             <!-- app refer-->
             <RelativeLayout
                 android:layout_width="match_parent"
