@@ -1,5 +1,5 @@
 # Perpule-Demo
-Hacker News Api implementation with Firebase Authentication
+Authentication - Google Sign-in , Password and Phone Number
 
 Authentication using Firebase-
   - Google Sign-in
